@@ -3,7 +3,7 @@ function param = getSubjParam(pp)
 %% participant-specific notes
 
 %% set path and pp-specific file locations
-unique_numbers = [50, 89, 79, 95, 81, 52, 33, 10, 22]; %needs to be in the right order
+unique_numbers = [50,89,79,95,81,52,33,10,22,64,96,80,62,58,82,56,72,36,92,66,61]; %needs to be in the right order
 
 param.path = '\\labsdfs.labs.vu.nl\labsdfs\FGB-ETP-CogPsy-ProactiveBrainLab\core_lab_members\Anna\Data\m3 - temporal separation\';
 

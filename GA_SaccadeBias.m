@@ -8,11 +8,11 @@ clear; clc; close all;
 oneOrTwoD       = 1;
 oneOrTwoD_options = {'_1D','_2D'};
 
-pp2do           = [2:9];
+pp2do           = [2:21];
 
 nsmooth         = 500;
 plotSinglePps   = 0;
-plotGAs         = 1;
+plotGAs         = 0;
 xlimtoplot      = [-750 1500];
 
 %% visual parameters
@@ -205,6 +205,7 @@ if plotGAs
     p9 = frevede_errorbarplot(saccade.time, squeeze(d3(:,10,:)), 'r', 'se');
     p10 = frevede_errorbarplot(saccade.time, squeeze(d3(:,11,:)), 'm', 'se');
     legend([p9, p10], {'cue any - same side', 'cue any - other side'});
+    xlim(-500, 1500);
     plot(xlim, [0 0]);
     ylabel('Hz')
     title('effect (toward vs. away) - same vs. other side (only cued)');
