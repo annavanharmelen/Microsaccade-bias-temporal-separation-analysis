@@ -221,6 +221,44 @@ if plotGAs
     ylabel('Rate (Hz)');
     xlabel('Time (ms)');
     hold off
+
+    % plot the effect of zero vs. non-zero
+    figure;
+    subplot(3,1,1)
+    hold on
+    p12 = frevede_errorbarplot(saccade.time, squeeze(d3(:,4,:)), 'c', 'se');
+    p13 = frevede_errorbarplot(saccade.time, squeeze(d3(:,7,:)), 'm', 'se');
+    xlim([-500, 1500]);
+    ylim([-0.1, 0.2]);
+    plot(xlim, [0 0], 'k');
+    legend([p12, p13], {'cue 0', 'cue any'});
+    ylabel('Hz')
+    title('effect of cueing vs not');
+    hold off
+
+    subplot(3,1,2)
+    hold on
+    p14 = frevede_errorbarplot(saccade.time, squeeze(d3(:,7,:)) - squeeze(d3(:,4,:)), 'k', 'se');
+    xlim([-500, 1500]);
+    ylim([-0.1, 0.2]);
+    plot(xlim, [0 0], 'k');
+    legend(p14, {'cue any - cue 0'});
+    ylabel('Hz')
+    title('effect of cueing - not');
+    hold off
+
+    subplot(3,1,3)
+    hold on
+    p15 = frevede_errorbarplot(saccade.time, squeeze(d3(:,10,:)) - squeeze(d3(:,8,:)), 'b', 'se');
+    p16 = frevede_errorbarplot(saccade.time, squeeze(d3(:,11,:)) - squeeze(d3(:,9,:)), 'r', 'se');
+    xlim([-500, 1500]);
+    ylim([-0.1, 0.2]);
+    plot(xlim, [0 0], 'k');
+    legend([p15, p16], {'cue any - cue 0 (same side)', 'cue any - cue 0 (other side)'});
+    ylabel('Hz')
+    title('effect of cueing - not x cueing same or other sides');
+    hold off
+
     
     %% just effect as function of saccade size
     cfg = [];
