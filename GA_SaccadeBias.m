@@ -264,17 +264,17 @@ if plotGAs
     cfg = [];
     cfg.parameter = 'effect';
     cfg.figure = 'gcf';
-    cfg.zlim = [-0.3, 0.3];
+    cfg.zlim = [-0.1, 0.1];
     cfg.xlim = xlimtoplot;  
     cfg.colormap = 'jet';
     
     % per condition
     figure;
-    for chan = [1:9]
+    for chan = [1:11]
         hold on
         cfg.channel = chan;
-        subplot(3,3,chan);
-        saccadesize.effect = squeeze(d6(sp,:,:,:)); % put in data from all pp
+        subplot(3,4,chan);
+        saccadesize.effect = squeeze(mean(d6(:,:,:,:))); % put in data from all pp
         ft_singleplotTFR(cfg, saccadesize);
         ylabel('Saccade size (dva)');
         xlabel('Time (ms)');
