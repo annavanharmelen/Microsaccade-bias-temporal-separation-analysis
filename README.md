@@ -21,8 +21,8 @@ The analysis runs in multiple parts, some of which are dependent on each other.
 All main behavioural data is analysed in getBehaviour.m.
 
 All eye-tracking data is analysed by entering the desired participantnumbers into these scripts, and then running them in precisely this sequence:
-1. epochEyeData.m
-2. get_GazePositionBias.m and get_SaccadeBias.m, these scripts respectively calculate the average gaze and saccade biases per participant.
-3. GA_GazePositionBias.m and GA_SaccadeBias.m, these scripts respectively calculate the grand average gaze and saccade biases, where each participant is weighted equally, independent of the number of trials they completed.
+1. epochEyeData.m (done only once per participant)
+2. get_GazePositionBias.m and get_SaccadeBias.m, these scripts respectively calculate the average gaze and saccade biases per participant. (also done only once per participant, unless changes are made to the code)
+3. GA_GazePositionBias.m and GA_SaccadeBias.m, these scripts respectively calculate the grand average gaze and saccade biases, where each participant is weighted equally, independent of the number of trials they completed. (run every time you want to view the data)
 
 Note that most of these eye-tracking analysis scripts are dependent on the 'frevede_' functions in the repository, and also on the [Fieldtrip toolbox](https://www.fieldtriptoolbox.org/download.php). 
