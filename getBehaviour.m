@@ -7,7 +7,7 @@ display_percentage_ok = 1;
 plot_individuals = 1;
 plot_averages = 1;
 
-pp2do = [2:12];
+pp2do = [2:26];
 p = 0;
 
 [bar_size, bright_colours, colours, light_colours, SOA_colours, dark_colours, subplot_size, labels, percentageok, overall_dt, overall_error] = setBehaviourParam(pp2do);
@@ -25,12 +25,16 @@ for pp = pp2do
 
     %% check percentage oktrials
     % select trials with reasonable decision times
-    oktrials = abs(zscore(behdata.idle_reaction_time_in_ms))<=3; 
+    oktrials = abs(zscore(behdata.idle_reaction_time_in_ms))<=3;
+    oktrials2 = abs(zscore(behdata.response_time_in_ms))<=3;
+
+    % use only trials that are ok in both ways
+    oktrials = and(oktrials, oktrials2);
     percentageok(p) = mean(oktrials)*100;
   
     % display percentage unbroken trials
     if display_percentage_ok
-        fprintf('%s has %.2f%% unbroken trials\n\n', param.subjName, percentageok(p,1))
+        fprintf('%s has %.2f%% OK trials\n\n', param.subjName, percentageok(p,1))
     end
     %% basic data checks, each pp in own subplot
     if plot_individuals
