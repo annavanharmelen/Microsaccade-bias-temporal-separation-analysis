@@ -4,10 +4,10 @@ clc
 
 %% set parameters and loops
 display_percentage_ok = 1;
-plot_individuals = 1;
-plot_averages = 1;
+plot_individuals = 0;
+plot_averages = 0;
 
-pp2do = [2:26];
+pp2do = setdiff(1:27,[1,4]);
 p = 0;
 
 [bar_size, bright_colours, colours, light_colours, SOA_colours, dark_colours, subplot_size, labels, percentageok, overall_dt, overall_error] = setBehaviourParam(pp2do);
