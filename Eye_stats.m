@@ -11,8 +11,8 @@ statcfg.statMethod = 'montecarlo';
 
 timeframe = [701:1701]; %this is 0 to 1000 ms post-cue
 
-data_cond1 = d3(:,10,:); %cue_any same side
-data_cond2 = d3(:,11,:); %cue_any other side
+data_cond1 = d3(:,10,timeframe); %cue_any same side
+data_cond2 = d3(:,11,timeframe); %cue_any other side
 null_data = zeros(size(data_cond1));
 
 stat = frevede_ftclusterstat1D(statcfg, data_cond1, data_cond2);
@@ -35,9 +35,9 @@ p1 = frevede_errorbarplot(saccade.time, squeeze(d3(:,10,:)), 'r', 'se');
 p2 = frevede_errorbarplot(saccade.time, squeeze(d3(:,11,:)), 'm', 'se');
 p1.LineWidth = 2.5;
 p2.LineWidth = 2.5;
-sig = plot(saccade.time(timeframe), mask_1_vs_2(timeframe)*-0.15, 'Color', 'k', 'LineWidth', 5); % verticaloffset for positioning of the "significance line"
-sig_1 = plot(saccade.time(timeframe), mask_1(timeframe)*-0.16, 'Color', 'r', 'LineWidth', 5);
-sig_2 = plot(saccade.time(timeframe), mask_2(timeframe)*-0.17, 'Color', 'm', 'LineWidth', 5);
+sig = plot(saccade.time(timeframe), mask_1_vs_2*-0.15, 'Color', 'k', 'LineWidth', 5); % verticaloffset for positioning of the "significance line"
+sig_1 = plot(saccade.time(timeframe), mask_1*-0.16, 'Color', 'r', 'LineWidth', 5);
+sig_2 = plot(saccade.time(timeframe), mask_2*-0.17, 'Color', 'm', 'LineWidth', 5);
 
 xlim(xlimtoplot);
 plot(xlim, [0,0], '--', 'LineWidth',2, 'Color', [0.6, 0.6, 0.6]);
