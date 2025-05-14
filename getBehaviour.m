@@ -176,7 +176,7 @@ if plot_averages
     ylim([90 100]);
     xlabel('pp #');
     
-    %% effect of cue on behaviour
+    %% effect of all cues on behaviour
     figure(figure_nr);
     figure_nr = figure_nr+1;
 
@@ -204,7 +204,31 @@ if plot_averages
     xticklabels(cue_labels)
     ylabel('Reproduction error, abs (deg)');
 
-    %% effect of co-occupying same space on behaviour
+    %% effect of cue_any vs. cue_0 on behaviour - main figures
+    % total reaction time
+    figure(figure_nr);
+    figure_nr = figure_nr+1;
+    hold on
+    bar(cue_labels(3:4), [mean(total_rt_cue(:,3:4))], 0.6);
+    %errorbar(x_positions, y_positions, errorvalues)
+    errorbar([1:2], [mean(total_rt_cue(:,3:4))], [std(total_rt_cue(:,3:4)) ./ sqrt(size(pp2do,2))], 'LineStyle', 'none', 'Color', 'k');
+    plot([1:2], [total_rt_cue(:,3:4)]', 'Color', [0, 0, 0, 0.5]);
+    ylim([1500 4500]);
+    ylabel("Total reaction time (ms)");
+    xticklabels({"Neutral cue", "Informative cue"});
+
+    % error
+    figure(figure_nr);
+    figure_nr = figure_nr+1;
+    hold on
+    bar(cue_labels(3:4), [mean(error_cue(:,3:4))], 0.6);
+    %errorbar(x_positions, y_positions, errorvalues)
+    errorbar([1:2], [mean(error_cue(:,3:4))], [std(error_cue(:,3:4)) ./ sqrt(size(pp2do,2))], 'LineStyle', 'none', 'Color', 'k');
+    plot([1:2], [error_cue(:,3:4)]', 'Color', [0, 0, 0, 0.5]);
+    ylabel("Colour reproduction error (deg)");
+    xticklabels({"Neutral cue", "Informative cue"});
+
+    %% effect of co-occupying same space on behaviour - joint figure
     figure(figure_nr);
     figure_nr = figure_nr+1;
 
@@ -231,6 +255,30 @@ if plot_averages
     xticks([1,2]);
     xticklabels(sharepos_labels)
     ylabel('Reproduction error, abs (deg)');
+
+    %% effect of co-occupying same space - main figures
+    % total reaction time
+    figure(figure_nr);
+    figure_nr = figure_nr+1;
+    hold on
+    bar(sharepos_labels, [mean(total_rt_sharepos)], 0.6);
+    %errorbar(x_positions, y_positions, errorvalues)
+    errorbar([1:2], [mean(total_rt_sharepos)], [std(total_rt_sharepos) ./ sqrt(size(pp2do,2))], 'LineStyle', 'none', 'Color', 'k');
+    plot([1:2], [total_rt_sharepos]', 'Color', [0, 0, 0, 0.5]);
+    ylim([2500 3000]);
+    ylabel("Total reaction time (ms)");
+    xticklabels({"Same side", "Other side"});
+
+    % error
+    figure(figure_nr);
+    figure_nr = figure_nr+1;
+    hold on
+    bar(sharepos_labels, [mean(error_sharepos)], 0.6);
+    %errorbar(x_positions, y_positions, errorvalues)
+    errorbar([1:2], [mean(error_sharepos)], [std(error_sharepos) ./ sqrt(size(pp2do,2))], 'LineStyle', 'none', 'Color', 'k');
+    plot([1:2], [error_sharepos]', 'Color', [0, 0, 0, 0.5]);
+    ylabel("Colour reproduction error (deg)");
+    xticklabels({"Co-occupying", "Separate"});
 
     %% Is there clustering of colours?
     for deg = 1:360
