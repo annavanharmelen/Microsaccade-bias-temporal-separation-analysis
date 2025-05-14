@@ -99,6 +99,7 @@ for pp = pp2do
     %% extract data of interest
     overall_dt(p,1) = mean(behdata.idle_reaction_time_in_ms(oktrials), "omitnan");
     overall_rt(p,1) = mean(behdata.response_time_in_ms(oktrials), "omitnan");
+    overall_total_rt(p,1) = mean(behdata.idle_reaction_time_in_ms(oktrials), "omitnan") + mean(behdata.response_time_in_ms(oktrials), "omitnan");
     overall_abs_error(p,1) = mean(behdata.rgb_distance(oktrials), "omitnan");
     overall_error(p,1) = mean(behdata.rgb_distance_signed(oktrials), "omitnan");
     
@@ -110,7 +111,10 @@ for pp = pp2do
 
     rt_sharepos(p,1) = mean(behdata.response_time_in_ms(same_side_trials&oktrials), "omitnan");
     rt_sharepos(p,2) = mean(behdata.response_time_in_ms(other_side_trials&oktrials), "omitnan");
-    
+
+    total_rt_sharepos(p,1) = mean(behdata.idle_reaction_time_in_ms(same_side_trials&oktrials), "omitnan") + mean(behdata.response_time_in_ms(same_side_trials&oktrials), "omitnan");
+    total_rt_sharepos(p,2) = mean(behdata.idle_reaction_time_in_ms(other_side_trials&oktrials), "omitnan") + mean(behdata.response_time_in_ms(other_side_trials&oktrials), "omitnan");
+
     % get error as function of co-occupying same space
     error_sharepos(p,1) = mean(behdata.rgb_distance(same_side_trials&oktrials), "omitnan");
     error_sharepos(p,2) = mean(behdata.rgb_distance(other_side_trials&oktrials), "omitnan");
@@ -127,6 +131,11 @@ for pp = pp2do
     rt_cue(p,2) = mean(behdata.response_time_in_ms(cue_2&oktrials), "omitnan");
     rt_cue(p,3) = mean(behdata.response_time_in_ms(cue_0&oktrials), "omitnan");
     rt_cue(p,4) = mean(behdata.response_time_in_ms(cue_any&oktrials), "omitnan");
+
+    total_rt_cue(p,1) = mean(behdata.idle_reaction_time_in_ms(cue_1&oktrials), "omitnan") + mean(behdata.response_time_in_ms(cue_1&oktrials), "omitnan");
+    total_rt_cue(p,2) = mean(behdata.idle_reaction_time_in_ms(cue_2&oktrials), "omitnan") + mean(behdata.response_time_in_ms(cue_2&oktrials), "omitnan");
+    total_rt_cue(p,3) = mean(behdata.idle_reaction_time_in_ms(cue_0&oktrials), "omitnan") + mean(behdata.response_time_in_ms(cue_0&oktrials), "omitnan");
+    total_rt_cue(p,4) = mean(behdata.idle_reaction_time_in_ms(cue_any&oktrials), "omitnan") + mean(behdata.response_time_in_ms(cue_any&oktrials), "omitnan");
     
     % get error as function of cue
     error_cue(p,1) = mean(behdata.rgb_distance(cue_1&oktrials), "omitnan");
